@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>善淘Buy42/志愿者网页</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+
+    <link href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet"
+        type="text/css" />
+    <style>
+        .floating-right-bottom-btn {
+            position: absolute;
+            right: 10px;
+            bottom: 16px;
+        }
+
+        .background {
+            opacity: 50%;
+        }
+
+        .container img {
+            width: 100%;
+            height: auto;
+        }
+
+
+
+        .container .btn:hover {
+            background-color: rgb(63, 201, 42);
+        }
+
+        .dark-bg {
+            background-color: #555 !important;
+        }
+
+        .light-bg {
+            background-color: white !important;
+        }
+
+        #section-signup {
+            background-color: #555;
+            padding: 10rem 0;
+        }
+
+        .collapse {
+            background-color: transparent !important;
+        }
+
+        .transparent {
+            background-color: transparent !important;
+        }
+
+        .btn {
+            border-color: black;
+            color: black;
+        }
+
+        .btn .btn-primary .transparent:hover,
+        #btn-sign-up:hover {
+            background-color: #489f4c90 !important;
+            --bs-btn-focus-shadow-rgb: 49, 132, 253;
+        }
+
+        #btn-sign-up {
+            border-color: #489f4c;
+            background-color: transparent;
+            color: #489f4c;
+        }
+
+        .light-text {
+            color: white;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            opacity: 1 !important;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            color: white !important;
+            filter: drop-shadow(1px 1px 2px black);
+        }
+
+        .carousel-control-prev-icon:hover,
+        .carousel-control-next-icon:hover {
+            filter: drop-shadow(1px 1px 2px #489f4c);
+            width: 5rem;
+        }
+
+        .bg-light.t100 {
+            background-color: transparent !important;
+
+        }
+
+        .bg-light.t10 {
+            background-color: #555555d9 !important;
+
+        }
+
+        .navbar.fixed-top.bg-light {
+            transition: ease-in-out 0.4s;
+        }
+
+        #certificateDiv {
+            padding-top: 1.5rem;
+            padding-bottom: 2.5rem;
+        }
+
+        #certificate {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        body {
+            display: grid;
+            grid-template-columns: auto 0px;
+        }
+
+        .top {
+            transition-duration: 0.3s;
+        }
+
+        #cert-title {
+            text-align: center;
+            padding-top: 2rem;
+        }
+
+        #navbar-content {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .nav-item {
+            padding-right: 2rem;
+            padding-left: 2rem;
+        }
+
+
+        .nav-link {
+            color: inherit !important;
+            transition: ease-in-out 0.3s forwards;
+        }
+    </style>
+    <style>
+        /* navbar stroke */
+        #navbar-content.stroke ul li .stroke-item,
+        #navbar-content.fill ul li .stroke-item {
+            position: relative;
+        }
+
+        #navbar-content.stroke ul li .stroke-item:after,
+        #navbar-content.fill ul li .stroke-item:after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 0%;
+            content: '.';
+            color: transparent;
+            background-color: #489f4c;
+            height: 2px;
+            transition-duration: 0.5s;
+        }
+
+        #navbar-content.stroke ul li .stroke-item:hover:after {
+            width: 100%;
+        }
+
+        #navbar-content.fill ul li a .stroke-item {
+            transition: all 0.3s;
+        }
+
+        #navbar-content.fill ul li .stroke-item:after {
+            text-align: left;
+            content: '.';
+            margin: 0;
+            opacity: 0;
+        }
+
+        #navbar-content.fill ul li .stroke-item:hover {
+            color: #fff;
+            z-index: 1;
+        }
+
+        #navbar-content .fill ul li .stroke-item:hover:after {
+            z-index: -10;
+            animation: fill 0.3s forwards;
+            -webkit-animation: fill 0.3s forwards;
+            -moz-animation: fill 0.3s forwards;
+            opacity: 1;
+        }
+
+        #signUpQR {
+            max-width: 100px;
+        }
+
+        #section-qr {
+            position: fixed;
+            margin: auto;
+            top: 70vh;
+            right: 0;
+            border: solid 2px #489f4c;
+            border-right: none;
+            padding: 10px;
+            border-radius: 10px;
+            border-bottom-right-radius: 0px;
+            border-top-right-radius: 0px;
+            background-color: white;
+            z-index: 99;
+        }
+
+        .text-accent {
+            color: #489f4c;
+        }
+
+        .btn-accent {
+            color: white;
+            background-color: #489f4c;
+            border: #489f4c;
+            border-radius: 4px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .btn-accent:hover {
+            background-color: #489f4cc8 !important;
+            box-shadow: 0 5px 15px rgba(91, 239, 54, 0.4) !important;
+        }
+
+        .collapse-text {
+            padding-top: 1.3rem !important;
+            color: black;
+        }
+
+        .navbar-brand.top {
+            margin: auto;
+        }
+
+        #mobile-logo {
+            display: none;
+        }
+
+        #expanded-logo {
+            display: block;
+        }
+
+        .single-button {
+            border-width: 4px !important;
+            font-size: 34px;
+            padding: 1rem 3rem;
+            font-weight: bold;
+            border-color: white!important;
+        }
+
+
+
+        .sign-up-bg {
+            background: url("./IMG_20220106_125355.jpg");
+            background-size: cover;
+            opacity: 1;
+            background-attachment: fixed;
+        }
+
+        @media only screen and (max-width: 992px) {
+            #scrollNav {
+                opacity: 1 !important;
+                background-color: #efefef !important;
+            }
+
+            #scrollNav.t10 {
+                opacity: 1 !important;
+                color: black !important;
+            }
+
+            #mobile-logo {
+                display: block;
+            }
+
+            #expanded-logo {
+                display: none;
+            }
+        }
+
+        #section-hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-outline-info {
+            --bs-btn-color: #489f4c;
+            --bs-btn-border-color: #489f4c79 !important;
+            --bs-btn-hover-color: #000;
+            --bs-btn-hover-bg: rgb(72, 159, 76);
+            --bs-btn-hover-border-color: #489f4c;
+            --bs-btn-focus-shadow-rgb: 101, 255, 59, 0.494;
+            --bs-btn-active-color: #000;
+            --bs-btn-active-bg: #489f4c;
+            --bs-btn-active-border-color: #489f4c;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #489f4c;
+            --bs-btn-disabled-bg: transparent;
+            --bs-btn-disabled-border-color: #489f4c;
+            --bs-gradient: none;
+        }
+
+        .btn-primary {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: #489f4c;
+            --bs-btn-border-color: #489f4c;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #489f4c;
+            --bs-btn-hover-border-color: #489f4c;
+            --bs-btn-focus-shadow-rgb: 49, 132, 253;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #489f4c;
+            --bs-btn-active-border-color: #489f4c;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #fff;
+            --bs-btn-disabled-bg: #489f4c;
+            --bs-btn-disabled-border-color: #489f4c;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="section-qr" class="text-center">
+            <p class="text-accent">志愿者报名</p>
+            <img id="signUpQR" src="./QRCODE.png" alt="">
+        </div>
+        <header id="section-navbar">
+            <nav class="navbar fixed-top navbar-expand-lg bg-light t100" id="scrollNav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content"
+                    aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse stroke justify-content-center" id="navbar-content">
+                        <ul class="navbar-nav align-items-center">
+
+                            <li id="mobile-logo" class="nav-item">
+                                <a class="navbar-brand top" href="#wrapper">
+                                    <img src="./logo.png" alt="" width="75px" height="75px" />
+                                </a>
+                            </li>
+
+                            <li class="nav-item item active">
+                                <a class="nav-link active stroke-item" href="#section-events">活动回顾</a>
+                            </li>
+                            <li class="nav-item item">
+                                <a class="nav-link stroke-item" href="#section-signup">志愿者报名</a>
+                            </li>
+
+                            <li id="expanded-logo" class="nav-item">
+                                <a class="navbar-brand top" href="#wrapper">
+                                    <img src="./logo.png" alt="" width="75px" height="75px" />
+                                </a>
+                            </li>
+
+                            <li class="nav-item item">
+                                <a class="nav-link stroke-item" href="#section-projects">志愿者项目</a>
+                            </li>
+                            <li class="nav-item item">
+                                <a class="nav-link stroke-item" href="#section-certificates">证书展示</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div id="section-hero">
+            <div class="container col-xxl-8 px-4 py-5 lightslide">
+                <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                    <div class="col-10 col-sm-8 col-lg-6 hero-image">
+                        <img src="./志愿者照片_16253notcaro/IMG_20220106_125224.jpg" class="d-block mx-lg-auto img-fluid"
+                            alt="Bootstrap Themes" width="700" height="500" loading="lazy" />
+                    </div>
+                    <div class="col-lg-6">
+                        <h1 class="display-5 fw-bold lh-1 mb-3">善淘Buy42</h1>
+                        <p class="lead">志愿者网页</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-caro" class="dark-bg py-5">
+            <div class="container">
+                <div id="carouselVolunteering" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselVolunteering" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselVolunteering" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselVolunteering" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselVolunteering" data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselVolunteering" data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#carouselVolunteering" data-bs-slide-to="5"
+                            aria-label="Slide 6"></button>
+                        <button type="button" data-bs-target="#carouselVolunteering" data-bs-slide-to="6"
+                            aria-label="Slide 7"></button>
+                        <button type="button" data-bs-target="#carouselVolunteering" data-bs-slide-to="7"
+                            aria-label="Slide 8"></button>
+                        <button type="button" data-bs-target="#carouselVolunteering" data-bs-slide-to="8"
+                            aria-label="Slide 9"></button>
+                        <button type="button" data-bs-target="#carouselVolunteering" data-bs-slide-to="9"
+                            aria-label="Slide 10"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="./志愿者照片_16253 copy/IMG_20210116_150257.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./志愿者照片_16253 copy/IMG_20210410_151443.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./志愿者照片_16253 copy/IMG_20210410_151532.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./志愿者照片_16253 copy/IMG_20210525_194326(1).jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./志愿者照片_16253 copy/IMG_20210525_194326(1).jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./志愿者照片_16253 copy/IMG_20210722_191137.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./志愿者照片_16253 copy/IMG_20210722_191340.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./志愿者照片_16253 copy/IMG_20210808_134111.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./志愿者照片_16253 copy/IMG_20211222_101447.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./志愿者照片_16253 copy/IMG_20211224_204058.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselVolunteering"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselVolunteering"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="section-events" class="light-bg">
+            <div class="container">
+                <h1 class="text-center py-5">往期志愿者活动回顾</h1>
+                <div class="row pb-4" id="row1">
+                </div>
+            </div>
+        </div>
+
+        <div id="section-signup" class="sign-up-bg">
+            <div class="container d-flex justify-content-center">
+                <a id="btn-sign-up" class="btn btn-primary transparent single-button" style="color: white;"
+                    href="http://fpluqjtz09f3a0s1.mikecrm.com/UYbjzHY" role="button">加入我们</a>
+            </div>
+        </div>
+        <div id="section-projects" class="lightslide text-center py-3">
+            <div id="proj-caro">
+                <div id="carouselProjects" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" id="caro-content"></div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjects"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProjects"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-certificates" class="bg-dark">
+            <h1 id="cert-title" class="light-text">志愿者证书展示</h1>
+            <div id="certificateDiv">
+                <img id="certificate" src="./certificate.png" alt="" height="942" width="667.5">
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./eventObjects.js"></script>
+    <script type="text/javascript" src="./projectObjects.js"></script>
+    <script>
+        var targetDiv = document.getElementById("row1")
+        for (ii = 0; ii < evData.length; ii++) {
+            var it = evData[ii]
+
+            var title = it.title;
+            var titleNode = document.createTextNode(title);
+            var titleRender = document.createElement("h5");
+            titleRender.setAttribute("class", "card-title");
+            titleRender.append(titleNode);
+
+            var url = it.gallery_url;
+            var btnNode = document.createTextNode("Click here")
+            var urlRender = document.createElement("a");
+            urlRender.setAttribute("class", "btn btn-primary btn-accent");
+            urlRender.setAttribute("href", url);
+            urlRender.append(btnNode);
+
+            var bodyRender = document.createElement("div");
+            bodyRender.setAttribute("class", "card-body");
+            bodyRender.append(titleRender);
+            bodyRender.append(urlRender);
+
+            var image = it.image;
+            var imageRender = document.createElement("img");
+            imageRender.setAttribute("src", image);
+            imageRender.setAttribute("alt", "");
+            imageRender.setAttribute("class", "card-img-top");
+
+            var cardDiv = document.createElement("div");
+            cardDiv.setAttribute("class", "card");
+            cardDiv.append(imageRender)
+            cardDiv.append(bodyRender)
+
+            var colRender = document.createElement('div')
+            colRender.setAttribute('class', 'col')
+            colRender.append(cardDiv)
+
+            targetDiv.append(colRender)
+        }
+    </script>
+    <script>
+        var projCaro = document.getElementById('proj-caro')
+        var targetDiv = document.getElementById('caro-content')
+
+        for (ii = 0; ii < projData.length; ii++) {
+            var it = projData[ii]
+
+            var id = it.id
+
+            var collapse = it.briefintro;
+            var collapseNode = document.createTextNode(collapse);
+            var collapseRender = document.createElement("div");
+            collapseRender.setAttribute("class", "card card-body");
+            collapseRender.append(collapseNode);
+
+            var collapseWhole = document.createElement('div')
+            collapseWhole.setAttribute('id', "collapseProj" + it.id)
+            collapseWhole.setAttribute('class', 'collapse collapse-text')
+            collapseWhole.append(collapseRender)
+
+            var button1 = document.createElement('button')
+            var btnNode = document.createTextNode('简介')
+            button1.setAttribute('aria-controls', "collapseProj" + it.id)
+            button1.setAttribute('href', "#collapseProj" + it.id)
+            button1.setAttribute('type', 'button')
+            button1.setAttribute('class', 'btn btn-accent btn-outline-info btn-lg px-4 me-sm-3 fw-bold')
+            button1.setAttribute('data-bs-toggle', "collapse")
+            button1.setAttribute('role', 'button')
+            button1.setAttribute('aria-expanded', 'false')
+            button1.append(btnNode)
+
+            var button2 = document.createElement('button')
+            var btnNode = document.createTextNode('了解更多')
+            button2.setAttribute('class', 'btn btn-outline-light btn-lg px-4')
+            button2.setAttribute('href', it.article)
+            button2.append(btnNode)
+
+            var buttonDiv = document.createElement('div')
+            buttonDiv.setAttribute('class', 'd-grid gap-2 d-sm-flex justify-content-sm-center')
+            buttonDiv.append(button1)
+            buttonDiv.append(button2)
+
+            var title = it.title
+            var titleNode = document.createTextNode(title)
+            var titleRender = document.createElement('h1')
+            titleRender.append(titleNode)
+
+            var colRender = document.createElement('div')
+            colRender.setAttribute('class', 'col-7')
+            colRender.append(titleRender)
+            colRender.append(buttonDiv)
+            colRender.append(collapseWhole)
+
+            var image = it.image;
+            var imageRender = document.createElement("img");
+            imageRender.setAttribute("src", it.image);
+            imageRender.setAttribute("alt", "");
+            imageRender.setAttribute("class", "d-block w-100");
+
+            var imageDiv = document.createElement('div')
+            imageDiv.setAttribute('class', 'col-5')
+            imageDiv.append(imageRender)
+
+            var rowRender = document.createElement('div')
+            rowRender.setAttribute('class', 'row')
+            rowRender.append(colRender)
+            rowRender.append(imageDiv)
+
+            var conRender = document.createElement('div')
+            conRender.setAttribute('class', 'container py-5')
+            conRender.setAttribute('id', 'article-proj01')
+            conRender.append(rowRender)
+
+            var itemRender = document.createElement('div')
+            if (ii === 0) itemRender.setAttribute('class', 'carousel-item active')
+            else itemRender.setAttribute('class', 'carousel-item')
+            itemRender.append(rowRender)
+
+            targetDiv.append(itemRender)
+        }
+
+        // var caro = new bootstrap.Carousel(projCaro)
+        // <div class="carousel-item active">
+        //     <div id="article-proj01" class="container py-5">
+        //         <div class="row">
+        //             <div class="col-7">
+        //                 <h1 class="display-5 fw-bold">石门二路街道志愿者自治慈善超市</h1>
+        //                 <p class="fs-5 mb-4">石门二路街道慈善超市，是一家完全由自愿者自治的慈善超市，我们的目标是成为一家“美好家园自治店”。
+        //                 </p>
+        //                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        //                     <button type="button"
+        //                         class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold"
+        //                         data-bs-toggle="collapse" href="#collapseProj01" role="button"
+        //                         aria-expanded="false" aria-controls="collapseProj01">简介</button>
+        //                     <button type="button"
+        //                         class="btn btn-outline-light btn-lg px-4">了解更多</button>
+        //                 </div>
+        //                 <div id="collapseProj01" class="collapse collapse-text">
+        //                     <div class="card card-body">
+        //                         Some placeholder content for the collapse component. This panel is
+        //                         hidden by
+        //                         default
+        //                         but
+        //                         revealed when the user activates the relevant trigger.
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //             <div class="col-5">
+        //                 <img src="https://picsum.photos/500/500" alt="">
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
+    </script>
+    <script>
+
+        var scrollNav = document.getElementById('scrollNav')
+        var heroDiv = document.getElementById('section-hero')
+        var navImg = document.getElementById('logo')
+        var navItem = document.getElementsByClassName('item')
+
+        document.addEventListener('scroll', function () {
+            if (window.scrollY > heroDiv.scrollHeight - scrollNav.scrollHeight) scrollNav.setAttribute('class', 'navbar navbar-expand-lg fixed-top bg-light t10 text-white')
+            else scrollNav.setAttribute('class', 'navbar navbar-expand-lg fixed-top bg-light t100')
+        })
+    </script>
+
+</html>
